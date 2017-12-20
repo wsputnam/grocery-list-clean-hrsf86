@@ -7,13 +7,13 @@
 Grocery List displays a list of groceries and their quantity from an array upon initial load.
 It allows users to add more groceries to the database and immediately displays new ones added.
 
-#Basic Requirements
+# Basic Requirements
 1. Initially upon page load displays a list of all of the groceries listed in the data.js file
 2. Allows you to enter a grocery name and grocery quantity and click on an add button to add the item to the list
 3. After adding a new grocery item, dynamically updates and displays the new grocery item on the page without reload the whole page
 4. If the exact same grocery item was added (not case sensitive) then it updates the quantity of the item
 
-#Advanced Requirements 
+# Advanced Requirements 
 Do these if you have completed the basics and have ample time to spare based on the assigned due date
 1. Ability to click on any grocery item and see a strike through of that item (as in its being checked off the list)
 2. When a new grocery item is added then any striked-through items disappear from the page/list completely
