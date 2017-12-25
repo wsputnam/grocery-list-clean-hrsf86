@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const GroceryItem = (props) => (
-  <div>
+  <li>
   {props.grocery.description}
   {props.grocery.quantity}
-</div>
+</li>
 )
 
 // export default GroceryItem;
