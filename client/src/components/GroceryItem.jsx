@@ -1,10 +1,11 @@
 import React from 'react';
 
-const GroceryItem = (props) => (
+export const GroceryItem = (props) => (
   <div>
   {props.grocery.description}
   {props.grocery.quantity}
 </div>
 )
 
-export default GroceryItem;
+// export default GroceryItem;
+
