@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 // import {GroceryList} from './src/components/GroceryList';
 // import {GroceryItem} from './src/components/GroceryItem';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,10 +23,15 @@ class App extends React.Component {
     const newItem = {};
     this.quantity;
     this.description;
-    newItem.id++;
-    newItem.quantity = this.quantity.value
+    newItem.quantity = this.quantity.value;
     newItem.description = this.description.value;
-
+    for (var i = 0; i < this.state.list.length; i++) {
+      if (Object.values(this.state.list[i]).indexOf(this.description) !== -1) {
+        this.state.list[i].quantity+=newItem.quantity;
+        return;
+      }
+    }
+    newItem.id = this.state.list[this.state.list.length - 1].id + 1;
     this.setState({
       list:[...this.state.list, newItem]
     });
