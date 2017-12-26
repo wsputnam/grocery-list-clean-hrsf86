@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import {GroceryList} from './src/components/GroceryList';
-// import {GroceryItem} from './src/components/GroceryItem';
+import groceryList from '../../database.data.js';
+
+import GroceryList from './components/GroceryList.jsx';
+import GroceryItem from './components/GroceryItem.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [
-                {id: 1, quantity: 5, description: "frozen pizza"},
-                {id: 2, quantity: 10, description: "greek yogurt"},
-                {id: 3, quantity: 2, description: "wine"},
-                {id: 4, quantity: 1, description: "iced coffee"}
-              ],
+      list: groceryList,
       line: false
     }
   }
@@ -25,12 +22,11 @@ class App extends React.Component {
     this.description;
     newItem.quantity = this.quantity.value;
     newItem.description = this.description.value;
-    for (var i = 0; i < this.state.list.length; i++) {
-      if (Object.values(this.state.list[i]).indexOf(this.description) !== -1) {
-        this.state.list[i].quantity+=newItem.quantity;
-        return;
+    this.state.list.forEach(function(item) {
+      if (item.description.toLowerCase() === newItem.description.toLowerCase()) {
+        item.quantity = item.quantity + newItem.quantity
       }
-    }
+    })
     newItem.id = this.state.list[this.state.list.length - 1].id + 1;
     this.setState({
       list:[...this.state.list, newItem]
@@ -53,9 +49,8 @@ class App extends React.Component {
       <span>Grocery List</span>
       <span>Description<input ref={(input) => {this.description = input}} type="text" /></span>
       <span>Quantity<input ref={(input) => {this.quantity = input}} type="text"/><button type="button" onClick={(event) => {this.addGrocery(event)}}>Add Grocery</button></span>
-      <div style={style} onClick={this.onGroceryItemClick.bind(this)}>{this.state.list.map(function(item) {
-        return <p key={item.id}>{item.description} {item.quantity}</p>
-      })}</div>
+      <GroceryList items={this.props.list} />
+     
    </div>
    );
   }

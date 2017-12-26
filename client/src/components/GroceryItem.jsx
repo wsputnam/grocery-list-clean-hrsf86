@@ -1,11 +1,12 @@
 import React from 'react';
+import GroceryList from './GroceryList.jsx';
 
-export const GroceryItem = (props) => (
+const GroceryItem = (props) => (
   <li>
-  {props.grocery.description}
-  {props.grocery.quantity}
+  {props.grocery.description + ' ' + 
+  props.grocery.quantity}
 </li>
 )
 
-// export default GroceryItem;
+export default GroceryItem;
 
